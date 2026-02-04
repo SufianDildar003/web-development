@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image-uplaoding</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav-menu">
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="upload-container">
+    <h2>Upload Image</h2>
+    <input type="file" id="imageUpload" accept="image/*">
+    <div class="note">Maximum file size: 2MB</div>
+    <div class="error" id="errorMsg"></div>
+</div>
+
+<script>
+    const uploadInput = document.getElementById("imageUpload");
+    const errorMsg = document.getElementById("errorMsg");
+    const maxSize = 2 * 1024 * 1024; // 2MB
+
+    uploadInput.addEventListener("change", function () {
+        errorMsg.textContent = "";
+
+        if (this.files.length > 0) {
+            const file = this.files[0];
+
+            if (file.size > maxSize) {
+                errorMsg.textContent = "size is large.";
+                this.value = ""; 
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
